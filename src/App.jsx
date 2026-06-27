@@ -1,42 +1,32 @@
 
-import { BrowserRouter,Route,Routes, useNavigate } from 'react-router-dom'
-import React, {Suspense} from 'react' 
-const Landing = React.lazy(() => import('./components/Landing'))
-const Dashboard = React.lazy(() => import('./components/Dashboard'))
+import React, { useState } from 'react'
 
 function App() {
- 
+  const [count, setCount] = useState(0)
+
   return (
     <div>
-      
-      <BrowserRouter>
-        <Appbar />
-        <Routes>
-          <Route path="/" element={
-            <Suspense fallback="Loading...">
-              <Landing />
-            </Suspense>
-          } />
-          <Route path="/dashboard" element={
-            <Suspense fallback="Loading...">
-              <Dashboard />
-            </Suspense>
-          } />
-        </Routes>
-      </BrowserRouter>
+      <Count count={count} />
+      <Buttons count={count} setCount={setCount} />
     </div>
-
   )
 }
 
-function Appbar() {
-  const navigate = useNavigate();
+function Count({ count }) {
   return (
-    <div >
-      <button onClick={() => navigate('/')}>Landing</button>
-      <button onClick={() => navigate('/dashboard')}>Dashboard</button>
+    <div>
+      Count: {count}
     </div>
-  );
+  )
+}
+
+function Buttons({ count, setCount }) {
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+    </div>
+  )
 }
 
 export default App
