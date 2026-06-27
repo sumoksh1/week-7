@@ -7,7 +7,6 @@ function App() {
   return (
     <div>
       <Count count={count} />
-      <Buttons count={count} setCount={setCount} />
     </div>
   )
 }
@@ -16,6 +15,7 @@ function Count({ count }) {
   return (
     <div>
       Count: {count}
+      <Buttons count={count} setCount={setCount} />
     </div>
   )
 }
