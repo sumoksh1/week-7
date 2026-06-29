@@ -1,6 +1,9 @@
 
 import React, { useState, useContext } from 'react'
 import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
+import { RecoilRoot } from 'recoil'
+import { countAtom } from './store/atoms/count'
 
 
 function App() {
